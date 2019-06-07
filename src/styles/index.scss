@@ -10,14 +10,45 @@ body,
 
 #app {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 
   background: #111;
   color: #fff;
 
-  font-size: 5vw;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
 
-  transition: background-color 5s;
+@keyframes headerAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  33% {
+    opacity: 1;
+    top: calc(50vh - 37.5px);
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+header {
+  position: relative;
+  height: 75px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  top: calc(50vh - 37.5px);
+  opacity: 0;
+  animation: headerAnimation 3.5s ease 0s 1 forwards;
+
+  & > img {
+    height: 3rem;
+    margin-right: 15px;
+  }
 }

@@ -2,11 +2,10 @@
   "compilerOptions": {
     "noEmit": true,
     "strict": true,
-    "target": "es5",
+    "target": "esnext",
     "module": "esnext",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "esModuleInterop": true,
@@ -23,6 +22,6 @@
       "dom.iterable"
     ]
   },
-  "include": ["src/**/*.ts", "src/global.d.ts"],
+  "include": ["src/**/*.ts", "src/index.d.ts"],
   "exclude": ["node_modules"]
 }

@@ -4,9 +4,9 @@
   "author": "BeeeQueue <adam.lj.haglund@gmail.com>",
   "devDependencies": {
     "@babel/core": "7.4.5",
+    "@babel/plugin-transform-runtime": "7.4.4",
     "@babel/preset-env": "7.4.5",
     "@babel/preset-typescript": "7.3.3",
-    "@types/redom": "3.12.1",
     "delete": "1.1.0",
     "gh-pages": "2.0.1",
     "gulp": "4.0.2",
