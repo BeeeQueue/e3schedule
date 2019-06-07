@@ -36,7 +36,6 @@ body,
   100% {
     opacity: 1;
     top: 0;
-    top: -100%;
   }
 }
 
@@ -70,10 +69,10 @@ header {
   top: calc(50vh - 37.5px);
   opacity: 0;
 
-  // animation: headerDesktop 3.5s ease 0s 1 forwards;
-  // @media screen and (max-width: 600px) {
-  //   animation: headerMobile 3.5s ease 0s 1 forwards;
-  // }
+  animation: headerDesktop 3.5s ease 0s 1 forwards;
+  @media screen and (max-width: 600px) {
+    animation: headerMobile 3.5s ease 0s 1 forwards;
+  }
 
   & > img {
     height: 3rem;
@@ -81,22 +80,37 @@ header {
   }
 }
 
+@keyframes containerAnim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 #container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
   top: $headerHeight;
   bottom: 0;
   width: 100%;
-  padding: 25px;
   overflow: auto;
+  opacity: 0;
+  animation: containerAnim 3s ease 1.5s 1 forwards;
 
   @media screen and (max-width: 600px) {
+    padding: 25px;
     top: 0;
   }
 
   & > .day {
-    font-size: 1.25rem;
     margin-bottom: 10px;
     padding: 5px;
+    width: 100%;
+    max-width: 500px;
 
     &:nth-child(1) {
       border: 2px solid #23144b;
@@ -120,9 +134,14 @@ header {
       background: linear-gradient(
         45deg,
         rgba(50, 50, 50, 0.1),
-        rgba(85, 85, 85, 0.1)
+        rgba(150, 150, 150, 0.1)
       );
       border-radius: 3px;
+      font-size: 1.5rem;
+
+      @media screen and (max-width: 600px) {
+        font-size: 1.25rem;
+      }
 
       &:not(:last-child) {
         margin-bottom: 5px;
@@ -131,6 +150,7 @@ header {
       & > .time {
         margin-top: 5px;
         text-align: right;
+        font-size: 1.25rem;
       }
     }
   }

@@ -140,6 +140,14 @@ class Conference {
     )
   }
 
+  public getDayString() {
+    return Intl.DateTimeFormat(undefined, {
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric',
+    }).format(this.schedule.time)
+  }
+
   public appendTo(element: HTMLElement) {
     element.insertAdjacentHTML('beforeend', this.el)
   }
@@ -163,6 +171,7 @@ const updatePage = () => {
       dayContainer.classList.add('day')
 
       container.append(dayContainer)
+      dayContainer.insertAdjacentHTML('beforebegin', `<div class="title">${c.getDayString()}</div>`)
     }
 
     c.appendTo(dayContainer)

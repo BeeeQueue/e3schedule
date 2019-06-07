@@ -72,7 +72,7 @@ exports.watch = cb => {
 }
 
 exports.publish = cb => {
-  Pages.publish('dist', cb)
+  Pages.publish('dist', {}, cb)
 }
 
 exports.default = series(clean, parallel(html, css, js, rest))
