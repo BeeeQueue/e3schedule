@@ -158,7 +158,7 @@ const updatePage = () => {
 
   const conferences = SCHEDULE.map(c => new Conference(c))
 
-  let dayContainer: HTMLDivElement = null as any
+  let dayContainer: HTMLElement = null as any
   let lastDay = -1
 
   conferences.forEach(c => {
@@ -167,11 +167,11 @@ const updatePage = () => {
     if (lastDay !== dayOfMonth) {
       lastDay = dayOfMonth
 
-      dayContainer = document.createElement('div')
+      dayContainer = document.createElement('section')
       dayContainer.classList.add('day')
 
       container.append(dayContainer)
-      dayContainer.insertAdjacentHTML('beforebegin', `<div class="title">${c.getDayString()}</div>`)
+      dayContainer.insertAdjacentHTML('beforebegin', `<h1 class="title">${c.getDayString()}</h1>`)
     }
 
     c.appendTo(dayContainer)

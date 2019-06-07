@@ -99,11 +99,16 @@ header {
   width: 100%;
   overflow: auto;
   opacity: 0;
+  padding: 0 15px;
   animation: containerAnim 3s ease 1.5s 1 forwards;
 
   @media screen and (max-width: 600px) {
-    padding: 25px;
     top: 0;
+  }
+
+  & > .title {
+    font-size: 1.15rem;
+    font-weight: 200;
   }
 
   & > .day {
@@ -112,19 +117,19 @@ header {
     width: 100%;
     max-width: 500px;
 
-    &:nth-child(1) {
+    &:nth-of-type(1) {
       border: 2px solid #23144b;
     }
-    &:nth-child(2) {
+    &:nth-of-type(2) {
       border: 2px solid #133f1a;
     }
-    &:nth-child(3) {
+    &:nth-of-type(3) {
       border: 2px solid #4b1414;
     }
-    &:nth-child(4) {
+    &:nth-of-type(4) {
       border: 2px solid #134a4e;
     }
-    &:nth-child(5) {
+    &:nth-of-type(5) {
       border: 2px solid #434b14;
     }
 
