@@ -19,7 +19,7 @@ body,
   font-family: 'Poppins', sans-serif;
 }
 
-@keyframes headerAnimation {
+@keyframes headerDesktop {
   0% {
     opacity: 0;
   }
@@ -30,8 +30,25 @@ body,
   }
 
   100% {
-    top: 0;
     opacity: 1;
+    top: 0;
+    top: -100%;
+  }
+}
+
+@keyframes headerMobile {
+  0% {
+    opacity: 0;
+  }
+
+  33% {
+    opacity: 1;
+    top: calc(50vh - 37.5px);
+  }
+
+  100% {
+    opacity: 1;
+    top: -100%;
   }
 }
 
@@ -43,9 +60,16 @@ header {
   justify-content: center;
   align-items: center;
   font-size: 3rem;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0 5px;
   top: calc(50vh - 37.5px);
   opacity: 0;
-  animation: headerAnimation 3.5s ease 0s 1 forwards;
+
+  animation: headerDesktop 3.5s ease 0s 1 forwards;
+  @media screen and (max-width: 600px) {
+    animation: headerMobile 3.5s ease 0s 1 forwards;
+  }
 
   & > img {
     height: 3rem;
