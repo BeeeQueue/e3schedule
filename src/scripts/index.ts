@@ -63,59 +63,51 @@ interface ISchedule {
   time: Date
 }
 
-const getDate = (
-  day: number,
-  month: number,
-  year: number,
-  hour: number,
-  minute: number,
-) => new Date(`${month} ${day} ${year} ${hour}:${minute} UTC`)
-
 // @ts-ignore
 const SCHEDULE: ISchedule[] = [
   {
     company: EA,
-    time: getDate(9, 6, 2019, 16, 30),
+    time: new Date("June 7 2019 12:00 pm PDT"),
   },
   {
     company: MICROSOFT,
-    time: getDate(9, 6, 2019, 20, 0),
+    time: new Date("June 9 2019 4:00 pm EDT"),
   },
   {
     company: BETHESDA,
-    time: getDate(10, 6, 2019, 0, 30),
+    time: new Date("June 9 2019 8:30 pm EDT"),
   },
   {
     company: DEVOLVER_DIGITAL,
-    time: getDate(10, 6, 2019, 2, 0),
+    time: new Date("June 9 2019 11:00 pm EDT"),
   },
   {
     company: UPLOADVR,
-    time: getDate(10, 6, 2019, 16, 0),
+    time: new Date("June 10 2019 16:00 UTC"),
   },
   {
     company: PC_GAMING,
-    time: getDate(10, 6, 2019, 17, 0),
+    time: new Date("June 10 2019 17:00 UTC"),
   },
   {
     company: LIMITED_RUN,
-    time: getDate(10, 6, 2019, 19, 0),
+    time: new Date("June 10 2019 19:00 UTC"),
   },
   {
     company: UBISOFT,
-    time: getDate(10, 6, 2019, 20, 0),
+    time: new Date("June 10 2019 20:00 UTC"),
   },
   {
     company: KINDA_FUNNY_SHOWCASE,
-    time: getDate(10, 6, 2019, 23, 30),
+    time: new Date("June 10 2019 23:00 UTC"),
   },
   {
     company: SQUARE_ENIX,
-    time: getDate(11, 6, 2019, 1, 0),
+    time: new Date("June 11 2019 01:00 UTC"),
   },
   {
     company: NINTENDO_DIRECT,
-    time: getDate(11, 6, 2019, 16, 0),
+    time: new Date("June 11 2019 16:00 UTC"),
   },
 ]
 
