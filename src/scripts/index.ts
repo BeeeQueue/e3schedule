@@ -3,6 +3,11 @@ interface ICompany {
   logo: string
 }
 
+const EA = {
+  name: 'EA Play',
+  logo: 'ea.svg',
+}
+
 const MICROSOFT = {
   name: 'Microsoft',
   logo: 'microsoft.svg',
@@ -68,6 +73,10 @@ const getDate = (
 
 // @ts-ignore
 const SCHEDULE: ISchedule[] = [
+  {
+    company: EA,
+    time: getDate(9, 6, 2019, 16, 30),
+  },
   {
     company: MICROSOFT,
     time: getDate(9, 6, 2019, 20, 0),
