@@ -6,6 +6,10 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var EA = {
+  name: 'EA Play',
+  logo: 'ea.svg'
+};
 var MICROSOFT = {
   name: 'Microsoft',
   logo: 'microsoft.svg'
@@ -53,6 +57,9 @@ var getDate = function getDate(day, month, year, hour, minute) {
 
 
 var SCHEDULE = [{
+  company: EA,
+  time: getDate(9, 6, 2019, 16, 30)
+}, {
   company: MICROSOFT,
   time: getDate(9, 6, 2019, 20, 0)
 }, {
