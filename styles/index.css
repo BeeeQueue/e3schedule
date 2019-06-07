@@ -1,0 +1,181 @@
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+#app {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #111;
+  color: #fff;
+  font-family: 'Poppins', sans-serif; }
+
+@-webkit-keyframes headerDesktop {
+  0% {
+    opacity: 0; }
+  33% {
+    opacity: 1;
+    top: calc(50vh - 37.5px); }
+  100% {
+    opacity: 1;
+    top: 0; } }
+
+@keyframes headerDesktop {
+  0% {
+    opacity: 0; }
+  33% {
+    opacity: 1;
+    top: calc(50vh - 37.5px); }
+  100% {
+    opacity: 1;
+    top: 0; } }
+
+@-webkit-keyframes headerMobile {
+  0% {
+    opacity: 0; }
+  33% {
+    opacity: 1;
+    top: calc(50vh - 37.5px); }
+  100% {
+    opacity: 1;
+    top: -100%; } }
+
+@keyframes headerMobile {
+  0% {
+    opacity: 0; }
+  33% {
+    opacity: 1;
+    top: calc(50vh - 37.5px); }
+  100% {
+    opacity: 1;
+    top: -100%; } }
+
+header {
+  position: relative;
+  height: 75px;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 3rem;
+  text-align: center;
+  padding: 0 5px;
+  top: calc(50vh - 37.5px);
+  opacity: 0;
+  -webkit-animation: headerDesktop 3.5s ease 0s 1 forwards;
+          animation: headerDesktop 3.5s ease 0s 1 forwards; }
+  @media screen and (max-width: 600px) {
+    header {
+      -webkit-animation: headerMobile 3.5s ease 0s 1 forwards;
+              animation: headerMobile 3.5s ease 0s 1 forwards; } }
+  header > img {
+    height: 3rem;
+    margin-right: 15px; }
+
+@-webkit-keyframes containerAnim {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes containerAnim {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+#container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 75px;
+  bottom: 75px;
+  width: 100%;
+  overflow: auto;
+  opacity: 0;
+  padding: 0 15px;
+  -webkit-animation: containerAnim 3s ease 1.5s 1 forwards;
+          animation: containerAnim 3s ease 1.5s 1 forwards; }
+  @media screen and (max-width: 600px) {
+    #container {
+      top: 0; } }
+  #container > .title {
+    font-size: 1.15rem;
+    font-weight: 200; }
+  #container > .day {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    max-width: 500px; }
+    #container > .day:nth-of-type(1) {
+      border: 2px solid #23144b; }
+    #container > .day:nth-of-type(2) {
+      border: 2px solid #133f1a; }
+    #container > .day:nth-of-type(3) {
+      border: 2px solid #4b1414; }
+    #container > .day:nth-of-type(4) {
+      border: 2px solid #134a4e; }
+    #container > .day:nth-of-type(5) {
+      border: 2px solid #434b14; }
+    #container > .day > .conference {
+      padding: 10px 20px;
+      width: 100%;
+      background: -webkit-linear-gradient(45deg, rgba(50, 50, 50, 0.1), rgba(150, 150, 150, 0.1));
+      background: -o-linear-gradient(45deg, rgba(50, 50, 50, 0.1), rgba(150, 150, 150, 0.1));
+      background: linear-gradient(45deg, rgba(50, 50, 50, 0.1), rgba(150, 150, 150, 0.1));
+      -webkit-border-radius: 3px;
+              border-radius: 3px;
+      font-size: 1.5rem; }
+      @media screen and (max-width: 600px) {
+        #container > .day > .conference {
+          font-size: 1.25rem; } }
+      #container > .day > .conference:not(:last-child) {
+        margin-bottom: 5px; }
+      #container > .day > .conference > .time {
+        margin-top: 5px;
+        text-align: right;
+        font-size: 1.25rem; }
+
+/*# sourceMappingURL=index.css.map */
