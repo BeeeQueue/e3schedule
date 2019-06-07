@@ -133,7 +133,11 @@ class Conference {
   }
 
   public getDayOfMonth() {
-    return this.schedule.time.getDate()
+    return Number(
+      Intl.DateTimeFormat(undefined, {
+        day: 'numeric',
+      }).format(this.schedule.time),
+    )
   }
 
   public appendTo(element: HTMLElement) {
@@ -156,6 +160,8 @@ const updatePage = () => {
       lastDay = dayOfMonth
 
       dayContainer = document.createElement('div')
+      dayContainer.classList.add('day')
+
       container.append(dayContainer)
     }
 
