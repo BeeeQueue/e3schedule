@@ -67,7 +67,7 @@ interface ISchedule {
 const SCHEDULE: ISchedule[] = [
   {
     company: EA,
-    time: new Date("June 7 2019 12:00 pm PDT"),
+    time: new Date("June 8 2019 12:00 pm PDT"),
   },
   {
     company: MICROSOFT,
