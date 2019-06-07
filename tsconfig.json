@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "noEmit": true,
     "strict": true,
     "target": "es5",
     "module": "esnext",
@@ -22,6 +23,6 @@
       "dom.iterable"
     ]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/global.d.ts"],
   "exclude": ["node_modules"]
 }

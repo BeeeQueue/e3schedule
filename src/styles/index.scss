@@ -1,0 +1,23 @@
+html,
+body,
+#app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  user-select: none;
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #111;
+  color: #fff;
+
+  font-size: 5vw;
+  font-family: 'Roboto', sans-serif;
+
+  transition: background-color 5s;
+}

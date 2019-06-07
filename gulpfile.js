@@ -7,6 +7,7 @@ const Pug = require('gulp-pug')
 const Babel = require('gulp-babel')
 const Uglify = require('gulp-uglify')
 const SourceMaps = require('gulp-sourcemaps')
+const Serve = require('gulp-serve')
 const Delete = require('delete')
 const Pages = require('gh-pages')
 
@@ -51,10 +52,12 @@ const js = () => {
 
 // Copy files
 const restPaths = ['src/**/*.{png,jpg,svg,ico,mp4}', 'src/CNAME']
-const rest = () => src(restPaths).pipe(dest(destination))
+const rest = () => src(restPaths, { allowEmpty: true }).pipe(dest(destination))
 
 // Delete files
 const clean = () => Delete.promise('dist/*')
+
+const serve = Serve({ root: 'dist' })
 
 exports.clean = clean
 
@@ -64,6 +67,7 @@ exports.watch = cb => {
   watch(cssPath, { ignoreInitial }, css)
   watch(jsPath, { ignoreInitial }, js)
   watch(restPaths, { ignoreInitial }, rest)
+  serve()
   cb()
 }
 

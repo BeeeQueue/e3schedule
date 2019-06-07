@@ -6,6 +6,7 @@
     "@babel/core": "7.4.5",
     "@babel/preset-env": "7.4.5",
     "@babel/preset-typescript": "7.3.3",
+    "@types/redom": "3.12.1",
     "delete": "1.1.0",
     "gh-pages": "2.0.1",
     "gulp": "4.0.2",
@@ -15,13 +16,15 @@
     "gulp-if": "2.0.2",
     "gulp-pug": "4.0.1",
     "gulp-sass": "4.0.2",
+    "gulp-serve": "1.4.0",
     "gulp-sourcemaps": "2.6.5",
     "gulp-uglify": "3.0.2",
     "husky": "2.4.0",
     "lint-staged": "8.2.0",
     "node-sass": "4.12.0",
     "prettier": "1.18.2",
-    "tslib": "1.9.3"
+    "tslib": "1.9.3",
+    "typescript": "3.5.1"
   },
   "husky": {
     "hooks": {
