@@ -11,11 +11,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "baseUrl": ".",
-    "types": ["node", "webpack-env"],
-    "paths": {
-      "@/*": ["src/*"]
-    },
     "lib": [
       "es5",
       "es2015",
@@ -24,10 +19,9 @@
       "es2018",
       "esnext",
       "dom",
-      "dom.iterable",
-      "scripthost"
+      "dom.iterable"
     ]
   },
-  "include": [],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules"]
 }
