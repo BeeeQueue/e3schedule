@@ -40,6 +40,7 @@
   },
   "scripts": {
     "build": "gulp",
-    "dev": "gulp watch"
+    "dev": "gulp watch",
+    "deploy": "NODE_ENV=production yarn build && gulp publish"
   }
 }
