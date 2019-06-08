@@ -267,7 +267,7 @@ const checkbox = document.getElementById(
 ) as HTMLInputElement
 
 checkbox.onchange = e => {
-  const { checked } = (e.currentTarget as HTMLInputElement)
+  const { checked } = e.currentTarget as HTMLInputElement
 
   if (checked) {
     registerNotifications()
@@ -294,7 +294,13 @@ const registerNotifications = () => {
     if (time <= now) return
 
     const id = setTimeout(() => {
-      new Notification('Hi there!')
+      const notification = new Notification(`${conference.company.name}'s E3 has started!`, {
+        vibrate: [500, 500, 500, 500, 500],
+      })
+
+      notification.onclick = () => {
+        location.href = conference.links[0].url
+      }
     }, time - now)
 
     notifications.push(id)
