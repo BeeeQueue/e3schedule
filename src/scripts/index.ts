@@ -58,56 +58,110 @@ const NINTENDO_DIRECT = {
   logo: 'nintendo_direct.svg',
 }
 
+type LinkType = 'youtube' | 'twitch' | 'mixer' | 'general'
 interface ISchedule {
-  company: ICompany
-  time: Date
+  readonly company: ICompany
+  readonly time: Date
+  readonly links: ReadonlyArray<{
+    type: LinkType
+    url: string
+  }>
 }
 
-// @ts-ignore
+const createLink = (url: string) => {
+  let type: LinkType = 'general'
+
+  if (url.includes('youtube')) {
+    type = 'youtube'
+  }
+  if (url.includes('twitch')) {
+    type = 'twitch'
+  }
+  if (url.includes('mixer')) {
+    type = 'mixer'
+  }
+
+  return {
+    type,
+    url,
+  }
+}
+
 const SCHEDULE: ISchedule[] = [
   {
     company: EA,
-    time: new Date("June 8 2019 12:00 pm PDT"),
+    time: new Date('June 8 2019 12:00 pm PDT'),
+    links: [
+      createLink('https://www.twitch.tv/ea'),
+      createLink('https://www.youtube.com/channel/UCIHBybdoneVVpaQK7xMz1ww'),
+    ],
   },
   {
     company: MICROSOFT,
-    time: new Date("June 9 2019 4:00 pm EDT"),
+    time: new Date('June 9 2019 4:00 pm EDT'),
+    links: [createLink('https://mixer.com/xbox')],
   },
   {
     company: BETHESDA,
-    time: new Date("June 9 2019 8:30 pm EDT"),
+    time: new Date('June 9 2019 8:30 pm EDT'),
+    links: [
+      createLink('https://www.twitch.tv/Bethesda'),
+      createLink('https://www.youtube.com/Bethesda'),
+      createLink('https://mixer.com/Bethesda'),
+    ],
   },
   {
     company: DEVOLVER_DIGITAL,
-    time: new Date("June 9 2019 11:00 pm EDT"),
+    time: new Date('June 9 2019 11:00 pm EDT'),
+    links: [
+      createLink('https://www.twitch.tv/devolverdigital'),
+      createLink('https://www.youtube.com/user/pcgamer'),
+      createLink('https://mixer.com/pcgamer'),
+    ],
   },
   {
     company: UPLOADVR,
-    time: new Date("June 10 2019 16:00 UTC"),
+    time: new Date('June 10 2019 16:00 UTC'),
+    links: [
+      createLink('https://www.youtube.com/channel/UCqDMvCa1tGak6AmijajiKOw'),
+    ],
   },
   {
     company: PC_GAMING,
-    time: new Date("June 10 2019 17:00 UTC"),
+    time: new Date('June 10 2019 17:00 UTC'),
+    links: [createLink('https://www.twitch.tv/pcgamer')],
   },
   {
     company: LIMITED_RUN,
-    time: new Date("June 10 2019 19:00 UTC"),
+    time: new Date('June 10 2019 19:00 UTC'),
+    links: [createLink('https://www.twitch.tv/limitedrungames')],
   },
   {
     company: UBISOFT,
-    time: new Date("June 10 2019 20:00 UTC"),
+    time: new Date('June 10 2019 20:00 UTC'),
+    links: [
+      createLink('https://www.twitch.tv/ubisoft'),
+      createLink('https://www.youtube.com/user/ubisoft'),
+      createLink('https://mixer.com/pcgamer'),
+    ],
   },
   {
     company: KINDA_FUNNY_SHOWCASE,
-    time: new Date("June 10 2019 23:00 UTC"),
+    time: new Date('June 10 2019 23:00 UTC'),
+    links: [createLink('https://www.youtube.com/kindafunnygames')],
   },
   {
     company: SQUARE_ENIX,
-    time: new Date("June 11 2019 01:00 UTC"),
+    time: new Date('June 11 2019 01:00 UTC'),
+    links: [createLink('https://e3.square-enix-games.com')],
   },
   {
     company: NINTENDO_DIRECT,
-    time: new Date("June 11 2019 16:00 UTC"),
+    time: new Date('June 11 2019 16:00 UTC'),
+    links: [
+      createLink('https://e3.nintendo.com/'),
+      createLink('https://www.youtube.com/channel/UCGIY_O-8vW4rfX98KlMkvRg'),
+    ],
   },
 ]
 
@@ -120,7 +174,17 @@ class Conference {
     this.el = `
       <div class="conference">
         <div class="company">${schedule.company.name}</div>
-        <div class="time">${this.getTime()}</div>
+        <div class="lower">
+          ${this.mapHTML(
+            schedule.links,
+            link => `
+              <a class="link ${link.type}" href="${link.url}" target="_blank" rel="noref">
+                <img src="img/${link.type}.svg" alt="${link.type}"/>
+              </a>
+            `,
+          )}
+          <div class="time">${this.getTime()}</div>
+        </div>
       </div>
     `
   }
@@ -131,6 +195,18 @@ class Conference {
       minute: 'numeric',
       timeZoneName: 'short',
     }).format(this.schedule.time)
+  }
+
+  private mapHTML(
+    links: ISchedule['links'],
+    mapFn: (link: ISchedule['links'][number]) => string,
+  ): string {
+    return links
+      .map(link => {
+        const result = mapFn(link)
+        return result.trim()
+      })
+      .join('\n')
   }
 
   public getDayOfMonth() {
@@ -172,7 +248,10 @@ const updatePage = () => {
       dayContainer.classList.add('day')
 
       container.append(dayContainer)
-      dayContainer.insertAdjacentHTML('beforebegin', `<h1 class="title">${c.getDayString()}</h1>`)
+      dayContainer.insertAdjacentHTML(
+        'beforebegin',
+        `<h1 class="title">${c.getDayString()}</h1>`,
+      )
     }
 
     c.appendTo(dayContainer)
