@@ -90,7 +90,7 @@ const createLink = (url: string) => {
 const SCHEDULE: ISchedule[] = [
   {
     company: EA,
-    time: new Date('June 8 2019 12:00 pm PDT'),
+    time: new Date('June 8 2019 16:30 UTC'),
     links: [
       createLink('https://www.twitch.tv/ea'),
       createLink('https://www.youtube.com/channel/UCIHBybdoneVVpaQK7xMz1ww'),
@@ -259,3 +259,49 @@ const updatePage = () => {
 }
 
 updatePage()
+
+const notifications: number[] = []
+
+const checkbox = document.getElementById(
+  'notification-checkbox',
+) as HTMLInputElement
+
+checkbox.onchange = e => {
+  const { checked } = (e.currentTarget as HTMLInputElement)
+
+  if (checked) {
+    registerNotifications()
+  } else {
+    unregisterNotifications()
+  }
+}
+
+const registerNotifications = () => {
+  if (Notification.permission !== 'granted') {
+    Notification.requestPermission().then(result => {
+      if (result === 'granted') {
+        return registerNotifications()
+      }
+
+      checkbox.checked = false
+    })
+  }
+
+  SCHEDULE.forEach(conference => {
+    const time = conference.time.getTime()
+    const now = Date.now()
+
+    if (time <= now) return
+
+    const id = setTimeout(() => {
+      new Notification('Hi there!')
+    }, time - now)
+
+    notifications.push(id)
+  })
+}
+
+const unregisterNotifications = () => {
+  notifications.forEach(id => clearTimeout(id))
+  notifications.splice(0, notifications.length)
+}
